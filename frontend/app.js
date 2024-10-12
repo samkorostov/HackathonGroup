@@ -16,7 +16,7 @@ document.getElementById('start').addEventListener('click', function() {
                 reader.readAsDataURL(audioBlob);
                 reader.onloadend = () => {
                     const base64AudioMessage = reader.result.split(',')[1];
-                    fetch('YOUR_API_GATEWAY_URL', {
+                    fetch('https://4fp3lzf207.execute-api.us-west-2.amazonaws.com/dev', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ message: base64AudioMessage })
