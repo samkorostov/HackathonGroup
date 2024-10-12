@@ -1,1 +1,4 @@
-# Hackathon Group - Eli Haas and Luca Cero
+# The Sweestest DubHacks Group
+### Eli Haas, Luca Cero
+
+## Roadmap:
