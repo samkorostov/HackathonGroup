@@ -47,4 +47,7 @@ This HTML page provides a simple user interface to record live audio and transcr
   - Capture audio input.
   - Process and convert the audio into text.
   - Display the transcribed text in the `textOutput` div.
-# End of index.html documentation
+
+
+
+
