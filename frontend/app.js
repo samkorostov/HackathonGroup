@@ -1,4 +1,3 @@
-
 document.getElementById('start').addEventListener('click', function() {
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
@@ -16,8 +15,9 @@ document.getElementById('start').addEventListener('click', function() {
                 reader.readAsDataURL(audioBlob);
                 reader.onloadend = () => {
                     const base64AudioMessage = reader.result.split(',')[1];
-                    fetch('https://4fp3lzf207.execute-api.us-west-2.amazonaws.com/dev', {
+                    fetch('https://4fp3lzf207.execute-api.us-west-2.amazonaws.com/dev/stream', {
                         method: 'POST',
+                        mode: 'no-cors',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ message: base64AudioMessage })
                     })
