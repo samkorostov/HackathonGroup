@@ -3,27 +3,32 @@ document.getElementById('start').addEventListener('click', function() {
         .then(stream => {
             const mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.start();
-            const audioChunks = [];
+            const audioChunks = [];  // Store all the audio chunks
 
             mediaRecorder.addEventListener("dataavailable", event => {
-                audioChunks.push(event.data);
+                audioChunks.push(event.data);  // Push each chunk into the array
             });
 
+            // When the recording stops, process the entire audio file
             mediaRecorder.addEventListener("stop", () => {
-                const audioBlob = new Blob(audioChunks);
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' }); // Create one large audio Blob from the chunks
                 const reader = new FileReader();
-                reader.readAsDataURL(audioBlob);
+                reader.readAsDataURL(audioBlob);  // Convert the audio Blob to Base64
                 reader.onloadend = () => {
                     const base64AudioMessage = reader.result.split(',')[1];
-                    fetch('https://4fp3lzf207.execute-api.us-west-2.amazonaws.com/dev/stream', {
+                    
+                    // Send the entire audio blob for transcription
+                    fetch('https://bq0g3wdta6.execute-api.us-west-2.amazonaws.com/TranscribeFunction', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 
-                                   'X-Api-Key': 'wtKa3QlFnD6Bx9baQKwjs119JZJGM2rs8J7qYCmb'
+                        headers: { 
+                            'Content-Type': 'application/json', 
+                            'X-Api-Key': 'wtKa3QlFnD6Bx9baQKwjs119JZJGM2rs8J7qYCmb'
                         },
-                        body: JSON.stringify({ message: base64AudioMessage })
+                        body: JSON.stringify({ message: base64AudioMessage })  // Send the Base64 audio
                     })
                     .then(response => response.json())
                     .then(data => {
+                        // Display the transcription result
                         if (data && data.transcript) {
                             document.getElementById('textOutput').textContent = data.transcript;
                         } else {
@@ -37,10 +42,11 @@ document.getElementById('start').addEventListener('click', function() {
                 };
             });
 
+            // Enable the stop button when recording starts
             document.getElementById('stop').disabled = false;
             document.getElementById('stop').addEventListener('click', () => {
-                mediaRecorder.stop();
-                document.getElementById('stop').disabled = true;
+                mediaRecorder.stop();  // Stop the recording when the stop button is clicked
+                document.getElementById('stop').disabled = true;  // Disable the stop button again
             });
         });
 });
