@@ -17,13 +17,20 @@ document.getElementById('start').addEventListener('click', function() {
                     const base64AudioMessage = reader.result.split(',')[1];
                     fetch('https://4fp3lzf207.execute-api.us-west-2.amazonaws.com/dev/stream', {
                         method: 'POST',
-                        mode: 'no-cors',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ message: base64AudioMessage })
                     })
                     .then(response => response.json())
                     .then(data => {
-                        document.getElementById('textOutput').textContent = data.transcript;
+                        if (data && data.transcript) {
+                            document.getElementById('textOutput').textContent = data.transcript;
+                        } else {
+                            document.getElementById('textOutput').textContent = "No transcription available";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error in fetch request:", error);
+                        document.getElementById('textOutput').textContent = "Failed to get transcription";
                     });
                 };
             });
