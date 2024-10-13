@@ -17,7 +17,9 @@ document.getElementById('start').addEventListener('click', function() {
                     const base64AudioMessage = reader.result.split(',')[1];
                     fetch('https://4fp3lzf207.execute-api.us-west-2.amazonaws.com/dev/stream', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: { 'Content-Type': 'application/json', 
+                                   'X-Api-Key': 'wtKa3QlFnD6Bx9baQKwjs119JZJGM2rs8J7qYCmb'
+                        },
                         body: JSON.stringify({ message: base64AudioMessage })
                     })
                     .then(response => response.json())
