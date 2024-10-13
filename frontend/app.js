@@ -22,7 +22,6 @@ document.getElementById('start').addEventListener('click', function() {
                         method: 'POST',
                         headers: { 
                             'Content-Type': 'application/json', 
-                            'X-Api-Key': 'wtKa3QlFnD6Bx9baQKwjs119JZJGM2rs8J7qYCmb'
                         },
                         body: JSON.stringify({ message: base64AudioMessage })  // Send the Base64 audio
                     })
