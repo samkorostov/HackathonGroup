@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the frontend code for the `TranscribeFunction` application. The frontend captures audio from the user's microphone, sends it to the backend for transcription and enhancement, and displays the transcribed text.
+This is the frontend code for the `Vocalytics` application. The frontend captures audio from the user's microphone, sends it to the backend for transcription and enhancement, and displays the transcribed text.
 
 ## Dependencies
 
