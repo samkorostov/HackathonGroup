@@ -13,13 +13,13 @@ This project consists of two main components: the frontend and the backend. Each
 
 The frontend captures live audio from the user's microphone, sends it to the backend for transcription, and displays the resulting text on the webpage. It provides a simple user interface with buttons to start and stop the recording and an area to display the transcribed text.
 
-For more detailed information, refer to the [Frontend README](frontend/README.md).
+For more detailed information, refer to the [Frontend README](https://github.com/samkorostov/Vocalytics/frontend/README.md).
 
 ### Backend
 
 The backend is hosted on AWS Lambda and is responsible for processing the audio data received from the frontend. It converts the base64 encoded audio to `.wav` format, transcribes the audio using Amazon Transcribe, and enhances the transcription using generative AI models.
 
-For more detailed information, refer to the [Backend README](backend/README.md).
+For more detailed information, refer to the [Backend README](https://github.com/samkorostov/Vocalytics/backend/README.md).
 
 ## Roadmap
 
@@ -30,5 +30,5 @@ For more detailed information, refer to the [Backend README](backend/README.md).
 
 ## External Resources
 
-- **Frontend README**: Detailed documentation for the frontend can be found [here](frontend/README.md).
-- **Backend README**: Detailed documentation for the backend can be found [here](backend/README.md).
+- **Frontend README**: Detailed documentation for the frontend can be found [here](https://github.com/samkorostov/Vocalytics/frontend/README.md).
+- **Backend README**: Detailed documentation for the backend can be found [here](https://github.com/samkorostov/Vocalytics/backend/README.md).
