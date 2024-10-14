@@ -1,1 +1,0 @@
-# Front end: Install react here not in main folder pls
