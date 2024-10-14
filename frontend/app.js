@@ -17,8 +17,8 @@ document.getElementById('start').addEventListener('click', function() {
                 reader.onloadend = () => {
                     const base64AudioMessage = reader.result.split(',')[1];
                     
-                    // Send the entire audio blob for transcription
-                    fetch('https://bq0g3wdta6.execute-api.us-west-2.amazonaws.com/TranscribeFunction', {
+                    // Send the entire audio blob for transcription (API URL is hidden to avoid massive AWS bill)
+                    fetch('https://XXXXXX.execute-api.us-west-2.amazonaws.com/TranscribeFunction', {
                         method: 'POST',
                         headers: { 
                             'Content-Type': 'application/json', 
