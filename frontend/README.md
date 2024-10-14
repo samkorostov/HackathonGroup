@@ -8,7 +8,11 @@ This is the frontend code for the `TranscribeFunction` application. The frontend
 
 The following dependencies are required for this frontend:
 
-- `http-server`: A simple, zero-configuration command-line HTTP server.
+- `Google Fonts API`: Used to import custom fonts for the application. The fonts are defined in [styles.css](styles.css).
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+```
 
 ## Code Structure
 
