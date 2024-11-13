@@ -31,4 +31,4 @@ For more detailed information, refer to the [Backend README](https://github.com/
 ## External Resources
 
 - **Frontend README**: Detailed documentation for the frontend can be found [here](https://github.com/samkorostov/Vocalytics/blob/main/frontend/README.md).
-- **Backend README**: Detailed documentation for the backend can be found [here](httos://github.com/samkorostov/Vocalytics/blob/main/backend/README.md).
+- **Backend README**: Detailed documentation for the backend can be found [here](https://github.com/samkorostov/Vocalytics/blob/main/backend/README.md).
