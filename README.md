@@ -36,5 +36,5 @@ For more detailed information, refer to the [Backend README](https://github.com/
 ## Project Updates:
 - [X] Solved CORS errors with API, preflight requests are now being handled correctly
 - [ ] Indentify causes of errors surrounding inputted audio being too small to process, need to look into how frontend sends audio chunks
-- [ ] Reimplement AI enhanced text after losing access to Bedrock after conclusion of Dubhacks '24, likely will use openAI
+- [ ] Reimplement AI enhanced text after losing access to Bedrock after conclusion of Dubhacks '24, likely will use openAI's API
 - [ ] Once functionality is restored, improve client UI and overall visual appeal
