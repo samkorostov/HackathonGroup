@@ -32,3 +32,9 @@ For more detailed information, refer to the [Backend README](https://github.com/
 
 - **Frontend README**: Detailed documentation for the frontend can be found [here](https://github.com/samkorostov/Vocalytics/blob/main/frontend/README.md).
 - **Backend README**: Detailed documentation for the backend can be found [here](https://github.com/samkorostov/Vocalytics/blob/main/backend/README.md).
+
+## Project Updates:
+- [X] Solved CORS errors with API, preflight requests are now being handled correctly
+- [ ] Indentify causes of errors surrounding inputted audio being too small to process, need to look into how frontend sends audio chunks
+- [ ] Reimplement AI enhanced text after losing access to Bedrock after conclusion of Dubhacks '24, likely will use openAI
+- [ ] Once functionality is restored, improve client UI and overall visual appeal
