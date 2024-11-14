@@ -1,22 +1,29 @@
+// NOTE: Currently having issues with audio files being too small for 
+// the speech-to-text API to transcribe. Need to investigate further.
+// Likely an issue with how audio chunks are being sent to the API, as
+// original intent was to process audio in real-time, however had to
+// be adjusted to utilize S3 storage for audio files, which are then
+// sent to the API for transcription.
+
+// TODO: Invstigate issue with audio files being too small for API to transcribe
+
 document.getElementById('start').addEventListener('click', function() {
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
             const mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.start();
-            const audioChunks = [];  // Store all the audio chunks
+            const audioChunks = [];
 
-            // Enable the stop button as soon as recording starts
             document.getElementById('stop').disabled = false;
 
             mediaRecorder.addEventListener("dataavailable", event => {
-                audioChunks.push(event.data);  // Push each chunk into the array
+                audioChunks.push(event.data);
             });
 
-            // When the recording stops, process the entire audio file
             mediaRecorder.addEventListener("stop", () => {
-                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' }); // Create one large audio Blob from the chunks
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
                 const reader = new FileReader();
-                reader.readAsDataURL(audioBlob);  // Convert the audio Blob to Base64
+                reader.readAsDataURL(audioBlob);
                 reader.onloadend = async () => {
                     const base64AudioMessage = reader.result.split(',')[1];
                 
@@ -26,18 +33,15 @@ document.getElementById('start').addEventListener('click', function() {
                             headers: { 
                                 'Content-Type': 'application/json',
                             },
-                            body: JSON.stringify({ message: base64AudioMessage })  // Send the Base64 audio
+                            body: JSON.stringify({ message: base64AudioMessage })
                         });
                 
-                        // Check if the HTTP response is OK (status in the range 200-299)
                         if (!response.ok) {
                             throw new Error(`Error in fetch request: ${response.statusText}`);
                         }
                 
-                        // Parse the response JSON if response was OK
                         const data = await response.json();
-                
-                        // Display the transcription result
+
                         if (data && data.transcript) {
                             document.getElementById('textOutput').textContent = data.transcript;
                         } else {
@@ -51,10 +55,9 @@ document.getElementById('start').addEventListener('click', function() {
                 };
             });
 
-            // Stop the recording when the stop button is clicked
             document.getElementById('stop').addEventListener('click', () => {
-                mediaRecorder.stop();  // Stop the recording
-                document.getElementById('stop').disabled = true;  // Disable the stop button again
+                mediaRecorder.stop();
+                document.getElementById('stop').disabled = true;
             });
         })
         .catch(error => {
